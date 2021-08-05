@@ -1,0 +1,115 @@
+priority: g , m ,s,t ,c,a,b
+
+fallback-policy: l non-circulating r recall-only n no-notices  o no-overdue   i no-lost-fee
+
+#non-circulating
+	/Standard rule for non-circulating materials
+t non-circulating : l non-circulating r non-requestable  n no-notices  o no-overdue   i standard-lost-fee
+
+#standard
+    /"normal" circulation for each major group, including unaffiliated users
+t standard-loan: l 4-week-5-renewal  r page-recall n standard-notices o no-overdue i standard-lost-fee 
+    g faculty staff : l 12-month-unlimited r page-recall n standard-notices o no-overdue i standard-lost-fee
+    g graduate graduate-sc-ssw : l 6-month-3-renewal r page-recall n standard-notices o no-overdue i standard-lost-fee 
+    g undergraduate : l 3-month-3-renewal r page-recall n standard-notices o no-overdue i standard-lost-fee 
+    g ac-resident hc-resident-alum sc-resident mh-resident um-resident-alum-temp-card um-resident-alum  : l 4-week-5-renewal  r page-recall n standard-notices o no-overdue i standard-lost-fee 
+
+#Audio and video games
+    /4 week rule for video games and audio. Audio is not a loan policy so it will require knowledge to apply the 4 week.  Material type destinction with fewer renewals
+t 4-week: l 4-week-5-renewal r page-recall n standard-notices o no-overdue i standard-lost-fee 
+    m video-game: l 4-week-1-renewal  r page-recall n standard-notices o no-overdue i standard-lost-fee 
+    
+#periodicals
+    /includes UM  addition for recall only
+t 1-week :  l non-circulating  r page-recall n standard-notices o no-overdue i standard-lost-fee
+    g undergraduate graduate faculty staff graduate-sc-ssw : l 1-week-2-renewal r page-recall n standard-notices o no-overdue i standard-lost-fee
+        b FC>UM  : l 1-week-2-renewal   r recall-only  n standard-notices o no-overdue i standard-lost-fee
+
+#reserve 4 hour
+    /applies to "all"  except mh resident and common cat
+t reserve-4-hour  : l 4-hour-reserve  r non-requestable  n reserve-notices  o no-overdue  i reserve-lost-fee 
+      g mh-resident um-comm-cat    : l non-circulating r recall-only n no-notices  o no-overdue   i no-lost-fee
+      
+#reserve 4 hour, due at closing
+    /identical to reserve 4 hour except due at 
+t reserve-4-hour-due-at-closing: l 4-hour-reserve-due-at-closing  r non-requestable  n reserve-notices  o no-overdue  i reserve-lost-fee
+     g mh-resident um-comm-cat    : l non-circulating r recall-only n no-notices  o no-overdue   i no-lost-fee
+#reserve 1 day
+    /reserve materials.  Does not allow ciculation to the MH resident and com cat patrons
+t reserve-1-day : l 1-day-reserve r non-requestable  n reserve-notices  o no-overdue  i reserve-lost-fee 
+     g mh-resident um-comm-cat    : l non-circulating r recall-only n no-notices  o no-overdue   i no-lost-fee
+
+#reserve 3 day
+    /reserve materials.  Does not allow ciculation to the MH resident and com cat patrons
+
+t reserve-3-day : l 3-day-reserve r non-requestable  n reserve-notices  o no-overdue  i reserve-lost-fee 
+    g mh-resident um-comm-cat    : l non-circulating r recall-only n no-notices  o no-overdue   i no-lost-fee
+
+#reserve 1 week
+    /reserve materials.  Does not allow ciculation to the MH resident and com cat patrons
+
+t reserve-1-week : l 1-week-reserve r non-requestable  n reserve-notices  o no-overdue  i reserve-lost-fee 
+    g mh-resident um-comm-cat  : l non-circulating r recall-only n no-notices  o no-overdue   i no-lost-fee
+
+#equipment 1 hour
+    /circs only to affiliated users (student, faculty, staff)  
+t equipment-1-hour : l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
+    g undergraduate graduate faculty staff graduate-sc-ssw : l 1-hour-equipment r non-requestable  n equipment-notices o no-overdue i hourly-equipment-lost-fee 
+    
+#equipment 4 hour
+    /circs only to affiliated users (student, faculty, staff)
+t equipment-4-hour : l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
+    g undergraduate graduate faculty staff graduate-sc-ssw : l 4-hour-equipment  r non-requestable  n equipment-notices o no-overdue i hourly-equipment-lost-fee 
+
+#equipment 4 hour, due at closing
+    /circs only to affiliated users (student, faculty, staff).  Due at library close
+t equipment-4-hour-due-at-closing   : l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
+    g undergraduate graduate faculty staff graduate-sc-ssw : l 4-hour-equipment-due-at-closing   r non-requestable  n equipment-notices o no-overdue i hourly-equipment-lost-fee 
+
+#equipment 4 hour, renewable
+    /circs only to affiliated users (student, faculty, staff). Can be renewed
+t equipment-4-hour-renewable    : l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
+    g undergraduate graduate faculty staff graduate-sc-ssw : l 4-hour-equipment-1-renewal    r non-requestable  n equipment-notices o no-overdue i hourly-equipment-lost-fee 
+
+#equipment 1 day
+    /circs only to affiliated users (student, faculty, staff).  Due at library close
+t equipment-1-day     : l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
+    g undergraduate graduate faculty staff graduate-sc-ssw : l 1-day-equipment    r non-requestable  n equipment-notices o no-overdue i hourly-equipment-lost-fee 
+       
+#equipment 3 day
+    /circs only to affiliated users (student, faculty, staff).  Due at library close
+t equipment-3-day    : l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
+    g undergraduate graduate faculty staff graduate-sc-ssw : l 3-day-equipment    r non-requestable  n equipment-notices o no-overdue i hourly-equipment-lost-fee 
+
+
+#equipment 1 week
+    /circs only to affiliated users (student, faculty, staff).  Due at library close
+t equipment-1-week    : l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
+    g undergraduate graduate faculty staff graduate-sc-ssw : l 1-week-equipment   r non-requestable  n equipment-notices o no-overdue i hourly-equipment-lost-fee 
+    
+ 
+ #semester
+     /one semester circ. Will require maintaining future semester fixed due dates
+t semester : l non-circulating r non-requestable  n no-notices   o no-overdue  i no-lost-fee 
+     g faculty staff graduate undergraduate graduate-sc-ssw  : l 1-semester-1-renewal  r non-requestable n standard-notices o no-overdue i no-lost-fee 
+     
+#limited
+    /not sure what limited refers to, but omits undergrads
+t limited : l non-circulating r non-requestable  n no-notices   o no-overdue  i no-lost-fee 
+    g faculty graduate staff : l 4-week-5-renewal r recall-only n standard-notices o no-overdue i standard-lost-fee
+    
+#Four Week
+    /Includes rules for videogame material type at AC, MH and SC
+t four-week :  l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
+    b  FC>UM  FC>MH  : l 4-week-5-renewal r page-recall n standard-notices o no-overdue i standard-lost-fee 
+    b FC>AC  FC>MH  FC>SC :    l 4-week-5-renewal r page-recall n standard-notices o no-overdue i standard-lost-fee
+        m video-game : l 4-week-1-renewal r page-recall n standard-notices o no-overdue i standard-lost-fee
+
+#2 Week
+t 2-week : l 2-week-1-renewal r page-recall n standard-notices o no-overdue i standard-lost-fee 
+
+#seed
+    /why not 1 year, no renewal, no lost.  Seed
+
+
+
