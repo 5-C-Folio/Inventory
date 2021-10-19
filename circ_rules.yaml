@@ -1,5 +1,6 @@
 priority: g , m ,s,t ,c,a,b
-
+/rule creation format is inconsistant.  While there should be a general principle to not repeat identical rules, sometimes for the purpose of readability, rules are broken apart- ie equipment, where there are an ever increasing number of rules.  Each rule is individual listed for readibility.  Audio and video games is not, because there are fewer rules
+/The general principle is to name rules based off the loan type they are intended to apply to, rather than the loan policy.  The intent is to provide clarity for users assigning loan policies.  The correct loan policy for an item should be clear.
 fallback-policy: l non-circulating r recall-only n no-notices  o no-overdue   i no-lost-fee
 
 #non-circulating
@@ -34,6 +35,7 @@ t reserve-4-hour  : l 4-hour-reserve  r non-requestable  n reserve-notices  o no
     /identical to reserve 4 hour except due at 
 t reserve-4-hour-due-at-closing: l 4-hour-reserve-due-at-closing  r non-requestable  n reserve-notices  o no-overdue  i reserve-lost-fee
      g mh-resident um-comm-cat    : l non-circulating r recall-only n no-notices  o no-overdue   i no-lost-fee
+
 #reserve 1 day
     /reserve materials.  Does not allow ciculation to the MH resident and com cat patrons
 t reserve-1-day : l 1-day-reserve r non-requestable  n reserve-notices  o no-overdue  i reserve-lost-fee 
@@ -94,9 +96,9 @@ t semester : l non-circulating r non-requestable  n no-notices   o no-overdue  i
      g faculty staff graduate undergraduate graduate-sc-ssw  : l 1-semester-1-renewal  r non-requestable n standard-notices o no-overdue i no-lost-fee 
      
 #limited
-    /not sure what limited refers to, but omits undergrads
+    /not sure what limited refers to, but omits undergrads.  This loan type lacks clarity for what it should apply to, neither reference a loan period or material type, or being a standard rule 
 t limited : l non-circulating r non-requestable  n no-notices   o no-overdue  i no-lost-fee 
-    g faculty graduate staff : l 4-week-5-renewal r recall-only n standard-notices o no-overdue i standard-lost-fee
+    g faculty graduate graduate-sc-ssw  staff : l 4-week-5-renewal r recall-only n standard-notices o no-overdue i standard-lost-fee
     
 #Four Week
     /Includes rules for videogame material type at AC, MH and SC
