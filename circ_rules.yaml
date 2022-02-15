@@ -95,9 +95,6 @@ t equipment-1-day     : l non-circulating r non-requestable  n no-notices   o no
 t equipment-3-day    : l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
     g undergraduate graduate faculty staff graduate-sc-ssw : l 3-day-equipment    r non-requestable  n equipment-notices o no-overdue i hourly-equipment-lost-fee 
 
-#TESTING equipment 3 day fined
-t equipment-3-day-fined : l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
-    g undergraduate graduate faculty staff graduate-sc-ssw :  l 3-day-equipment r non-requestable n equipment-notices o daily-equipment-fine i daily-equipment-lost-fee 
 
 #equipment 1 week
     /circs only to affiliated users (student, faculty, staff).  Due at library close
