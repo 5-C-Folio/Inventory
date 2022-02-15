@@ -2,7 +2,7 @@ priority: g , m ,s,t ,c,a,b
 /rule creation format is inconsistant.  While there should be a general principle to not repeat identical rules, sometimes for the purpose of readability, rules are broken apart- ie equipment, where there are an ever increasing number of rules.  Each rule is individual listed for readibility.  Audio and video games is not, because there are fewer rules
 /The general principle is to name rules based off the loan type they are intended to apply to, rather than the loan policy.  The intent is to provide clarity for users assigning loan policies.  The correct loan policy for an item should be clear.
 fallback-policy: l non-circulating r recall-only n no-notices  o no-overdue   i no-lost-fee
-
+ 
 #non-circulating
 	/Standard rule for non-circulating materials
 t non-circulating : l non-circulating r non-requestable  n no-notices  o no-overdue   i standard-lost-fee
@@ -13,7 +13,19 @@ t standard-loan: l 4-week-5-renewal  r page-recall n standard-notices o no-overd
     g faculty staff : l 12-month-unlimited r page-recall n standard-notices o no-overdue i standard-lost-fee
     g graduate graduate-sc-ssw : l 6-month-3-renewal r page-recall n standard-notices o no-overdue i standard-lost-fee 
     g undergraduate : l 3-month-3-renewal r page-recall n standard-notices o no-overdue i standard-lost-fee 
-    g ac-resident hc-resident-alum sc-resident mh-resident um-resident-alum-temp-card um-resident-alum  : l 4-week-5-renewal  r page-recall n standard-notices o no-overdue i standard-lost-fee 
+    //resident borrowers have borrowing privileges at their own instituion only 
+	g ac-resident : l non-circulating r non-requestable  n no-notices  o no-overdue   i standard-lost-fee
+		b FC>AC :l 4-week-5-renewal  r page-recall n standard-notices o no-overdue i standard-lost-fee 
+    g hc-resident-alum : l non-circulating r non-requestable  n no-notices  o no-overdue   i standard-lost-fee
+		b FC>HC :l 4-week-5-renewal  r page-recall n standard-notices o no-overdue i standard-lost-fee 
+	g sc-resident: l non-circulating r non-requestable  n no-notices  o no-overdue   i standard-lost-fee
+		b FC>SC : l 4-week-5-renewal  r page-recall n standard-notices o no-overdue i standard-lost-fee 
+	g mh-resident: l non-circulating r non-requestable  n no-notices  o no-overdue   i standard-lost-fee
+		b FC>MH : l 4-week-5-renewal  r page-recall n standard-notices o no-overdue i standard-lost-fee 
+	g um-resident-alum-temp-card: l non-circulating r non-requestable  n no-notices  o no-overdue   i standard-lost-fee
+		b FC>UM : l 4-week-5-renewal  r page-recall n standard-notices o no-overdue i standard-lost-fee
+	g um-resident-alum  :  l non-circulating r non-requestable  n no-notices  o no-overdue   i standard-lost-fee
+		b FC>UM : l 4-week-5-renewal  r page-recall n standard-notices o no-overdue i standard-lost-fee
 
 #Audio and video games
     /4 week rule for video games and audio. Audio is not a loan policy so it will require knowledge to apply the 4 week.  Material type destinction with fewer renewals
@@ -83,6 +95,9 @@ t equipment-1-day     : l non-circulating r non-requestable  n no-notices   o no
 t equipment-3-day    : l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
     g undergraduate graduate faculty staff graduate-sc-ssw : l 3-day-equipment    r non-requestable  n equipment-notices o no-overdue i hourly-equipment-lost-fee 
 
+#TESTING equipment 3 day fined
+t equipment-3-day-fined : l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
+    g undergraduate graduate faculty staff graduate-sc-ssw :  l 3-day-equipment r non-requestable n equipment-notices o daily-equipment-fine i daily-equipment-lost-fee 
 
 #equipment 1 week
     /circs only to affiliated users (student, faculty, staff).  Due at library close
@@ -112,6 +127,5 @@ t 2-week : l 2-week-1-renewal r page-recall n standard-notices o no-overdue i st
 
 #seed
     /why not 1 year, no renewal, no lost.  Seed
-
 
 
