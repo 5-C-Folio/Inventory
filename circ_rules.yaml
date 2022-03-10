@@ -42,10 +42,10 @@ t 1-week :  l non-circulating  r page-recall n standard-notices o no-overdue i s
     g institution: l 2-month-no-renewal r page-only o no-overdue n standard-notices i standard-lost-fee  
     g undergraduate graduate faculty staff graduate-sc-ssw : l 1-week-2-renewal r page-recall n standard-notices o no-overdue i standard-lost-fee
         b FC>UM  : l 1-week-2-renewal   r recall-only  n standard-notices o no-overdue i standard-lost-fee
-		
+        
 # commcat - the loan type
 t comm-catalog :  l non-circulating  r page-recall n standard-notices o no-overdue i standard-lost-fee
-	g undergraduate graduate faculty staff graduate-sc-ssw :l 4-week-no-renewal r non-requestable o no-overdue i standard-lost-fee n standard-notices 
+    g undergraduate graduate faculty staff graduate-sc-ssw :l 4-week-no-renewal r non-requestable o no-overdue i standard-lost-fee n standard-notices 
 
 #reserve 4 hour
     /applies to "all"  except mh resident and common cat
@@ -137,9 +137,9 @@ t four-week :  l non-circulating r non-requestable  n no-notices   o no-overdue 
 t 2-week :l 2-week-1-renewal r page-recall o no-overdue i standard-lost-fee n standard-notices 
 
 #comcat-borrower
-t comm-catalog :  l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
-    //still adding rules
-    
+t comm-catalog  :  l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
+	g graduate graduate-sc-ssw faculty staff undergraduate  :  l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
+		b FC>UM :l 4-week-no-renewal r non-requestable n standard-notices o no-overdue i standard-lost-fee 
 
     
 
