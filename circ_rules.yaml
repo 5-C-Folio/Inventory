@@ -36,11 +36,16 @@ t standard-loan: l 4-week-5-renewal  r page-recall n standard-notices o no-overd
 t 4-week: l 4-week-5-renewal r page-recall n standard-notices o no-overdue i standard-lost-fee 
     m video-game: l 4-week-1-renewal  r page-recall n standard-notices o no-overdue i standard-lost-fee 
     
-#periodicals
+#1 week (periodicals)
     /includes UM  addition for recall only
 t 1-week :  l non-circulating  r page-recall n standard-notices o no-overdue i standard-lost-fee
+    g institution: l 2-month-no-renewal r page-only o no-overdue n standard-notices i standard-lost-fee  
     g undergraduate graduate faculty staff graduate-sc-ssw : l 1-week-2-renewal r page-recall n standard-notices o no-overdue i standard-lost-fee
         b FC>UM  : l 1-week-2-renewal   r recall-only  n standard-notices o no-overdue i standard-lost-fee
+		
+# commcat - the loan type
+t comm-catalog :  l non-circulating  r page-recall n standard-notices o no-overdue i standard-lost-fee
+	g undergraduate graduate faculty staff graduate-sc-ssw :l 4-week-no-renewal r non-requestable o no-overdue i standard-lost-fee n standard-notices 
 
 #reserve 4 hour
     /applies to "all"  except mh resident and common cat
@@ -128,11 +133,14 @@ t four-week :  l non-circulating r non-requestable  n no-notices   o no-overdue 
     b FC>AC  FC>MH  FC>SC :    l 4-week-5-renewal r page-recall n standard-notices o no-overdue i standard-lost-fee
         m video-game : l 4-week-1-renewal r page-recall n standard-notices o no-overdue i standard-lost-fee
 
-#2 Week
-t 2-week : l non-circulating r recall-only n no-notices  o no-overdue   i no-lost-fee
-    g undergraduate graduate graduate-sc-ssw faculty staff :l 2-week-1-renewal r page-recall o no-overdue i standard-lost-fee n standard-notices 
-t 2-week : l 2-week-1-renewal r page-recall n standard-notices o no-overdue i standard-lost-fee 
-#1 week
+#two Week
+t 2-week :l 2-week-1-renewal r page-recall o no-overdue i standard-lost-fee n standard-notices 
+
+#comcat-borrower
+t comm-catalog :  l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
+    //still adding rules
+    
+
     
 
 
