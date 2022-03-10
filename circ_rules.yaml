@@ -42,6 +42,7 @@ t 1-week :  l non-circulating  r page-recall n standard-notices o no-overdue i s
     g institution: l 2-month-no-renewal r page-only o no-overdue n standard-notices i standard-lost-fee  
     g undergraduate graduate faculty staff graduate-sc-ssw : l 1-week-2-renewal r page-recall n standard-notices o no-overdue i standard-lost-fee
         b FC>UM  : l 1-week-2-renewal   r recall-only  n standard-notices o no-overdue i standard-lost-fee
+		g um-comm-cat  : l 2-month-no-renewal r non-requestable n standard-notices o no-overdue i standard-lost-fee 
         
 # commcat - the loan type
 t comm-catalog :  l non-circulating  r page-recall n standard-notices o no-overdue i standard-lost-fee
@@ -129,6 +130,7 @@ t limited : l non-circulating r non-requestable  n no-notices   o no-overdue  i 
 #Four Week
     /Includes rules for videogame material type at AC, MH and SC
 t four-week :  l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
+	g um-comm-cat :l 2-month-no-renewal r non-requestable n standard-notices o no-overdue i standard-lost-fee 
     b  FC>UM  FC>MH  : l 4-week-5-renewal r page-recall n standard-notices o no-overdue i standard-lost-fee 
     b FC>AC  FC>MH  FC>SC :    l 4-week-5-renewal r page-recall n standard-notices o no-overdue i standard-lost-fee
         m video-game : l 4-week-1-renewal r page-recall n standard-notices o no-overdue i standard-lost-fee
@@ -138,8 +140,8 @@ t 2-week :l 2-week-1-renewal r page-recall o no-overdue i standard-lost-fee n st
 
 #comcat-borrower
 t comm-catalog  :  l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
-	g graduate graduate-sc-ssw faculty staff undergraduate  :  l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
-		b FC>UM :l 4-week-no-renewal r non-requestable n standard-notices o no-overdue i standard-lost-fee 
+    g graduate graduate-sc-ssw faculty staff undergraduate  :  l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
+        b FC>UM :l 4-week-no-renewal r non-requestable n standard-notices o no-overdue i standard-lost-fee 
 
     
 
