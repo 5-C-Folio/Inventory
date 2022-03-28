@@ -42,7 +42,7 @@ t 1-week :  l non-circulating  r page-recall n standard-notices o no-overdue i s
     g institution: l 2-month-no-renewal r page-only o no-overdue n standard-notices i standard-lost-fee  
     g undergraduate graduate faculty staff graduate-sc-ssw : l 1-week-2-renewal r page-recall n standard-notices o no-overdue i standard-lost-fee
         b FC>UM  : l 1-week-2-renewal   r recall-only  n standard-notices o no-overdue i standard-lost-fee
-		g um-comm-cat  : l 2-month-no-renewal r non-requestable n standard-notices o no-overdue i standard-lost-fee 
+        g um-comm-cat  : l 2-month-no-renewal r non-requestable n standard-notices o no-overdue i standard-lost-fee 
         
 # commcat - the loan type
 t comm-catalog :  l non-circulating  r page-recall n standard-notices o no-overdue i standard-lost-fee
@@ -51,27 +51,27 @@ t comm-catalog :  l non-circulating  r page-recall n standard-notices o no-overd
 #reserve 4 hour
     /applies to "all"  except mh resident and common cat
 t reserve-4-hour  : l 4-hour-reserve  r non-requestable  n reserve-notices  o no-overdue  i reserve-lost-fee 
-      g mh-resident um-comm-cat    : l non-circulating r recall-only n no-notices  o no-overdue   i no-lost-fee
+      g mh-resident hc-resident-alum  um-comm-cat    : l non-circulating r recall-only n no-notices  o no-overdue   i no-lost-fee
       
 #reserve 4 hour, due at closing
     /identical to reserve 4 hour except due at 
 t reserve-4-hour-due-at-closing: l 4-hour-reserve-due-at-closing  r non-requestable  n reserve-notices  o no-overdue  i reserve-lost-fee
-     g mh-resident um-comm-cat    : l non-circulating r recall-only n no-notices  o no-overdue   i no-lost-fee
+     g mh-resident hc-resident-alum  um-comm-cat    : l non-circulating r recall-only n no-notices  o no-overdue   i no-lost-fee
 
 #reserve 1 day
     /reserve materials.  Does not allow ciculation to the MH resident and com cat patrons
 t reserve-1-day : l 1-day-reserve r non-requestable  n reserve-notices  o no-overdue  i reserve-lost-fee 
-     g mh-resident um-comm-cat    : l non-circulating r recall-only n no-notices  o no-overdue   i no-lost-fee
+     g mh-resident hc-resident-alum um-comm-cat    : l non-circulating r recall-only n no-notices  o no-overdue   i no-lost-fee
 
 #reserve 3 day
     /reserve materials.  Does not allow ciculation to the MH resident and com cat patrons
 t reserve-3-day : l 3-day-reserve r non-requestable  n reserve-notices  o no-overdue  i reserve-lost-fee 
-    g mh-resident um-comm-cat    : l non-circulating r recall-only n no-notices  o no-overdue   i no-lost-fee
+    g mh-resident hchc-resident-alum  um-comm-cat    : l non-circulating r recall-only n no-notices  o no-overdue   i no-lost-fee
 
 #reserve 1 week
     /reserve materials.  Does not allow ciculation to the MH resident and com cat patrons
 t reserve-1-week : l 1-week-reserve r non-requestable  n reserve-notices  o no-overdue  i reserve-lost-fee 
-    g mh-resident um-comm-cat  : l non-circulating r recall-only n no-notices  o no-overdue   i no-lost-fee
+    g mh-resident um-comm-cat hc-resident-alum  : l non-circulating r recall-only n no-notices  o no-overdue   i no-lost-fee
 
 #equipment 1 hour
     /circs only to affiliated users (student, faculty, staff)  
@@ -130,7 +130,7 @@ t limited : l non-circulating r non-requestable  n no-notices   o no-overdue  i 
 #Four Week
     /Includes rules for videogame material type at AC, MH and SC
 t four-week :  l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
-	g um-comm-cat :l 2-month-no-renewal r non-requestable n standard-notices o no-overdue i standard-lost-fee 
+    g um-comm-cat :l 2-month-no-renewal r non-requestable n standard-notices o no-overdue i standard-lost-fee 
     b  FC>UM  FC>MH  : l 4-week-5-renewal r page-recall n standard-notices o no-overdue i standard-lost-fee 
     b FC>AC  FC>MH  FC>SC :    l 4-week-5-renewal r page-recall n standard-notices o no-overdue i standard-lost-fee
         m video-game : l 4-week-1-renewal r page-recall n standard-notices o no-overdue i standard-lost-fee
@@ -144,6 +144,3 @@ t comm-catalog  :  l non-circulating r non-requestable  n no-notices   o no-over
         b FC>UM :l 4-week-no-renewal r non-requestable n standard-notices o no-overdue i standard-lost-fee 
 
     
-
-
-
