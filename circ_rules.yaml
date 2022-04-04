@@ -76,45 +76,45 @@ t reserve-1-week : l 1-week-reserve r non-requestable  n reserve-notices  o no-o
 #equipment 1 hour
     /circs only to affiliated users (student, faculty, staff)  
 t equipment-1-hour : l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
-    g undergraduate graduate faculty staff graduate-sc-ssw : l 1-hour-equipment r non-requestable  n equipment-notices o no-overdue i hourly-equipment-lost-fee 
+    g undergraduate graduate faculty staff graduate-sc-ssw : l 1-hour-equipment r non-requestable  n hourly-equipment-notices o no-overdue i hourly-equipment-lost-fee 
     
 #equipment 4 hour
     /circs only to affiliated users (student, faculty, staff)
 t equipment-4-hour : l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
-    g undergraduate graduate faculty staff graduate-sc-ssw : l 4-hour-equipment  r non-requestable  n equipment-notices o no-overdue i hourly-equipment-lost-fee 
+    g undergraduate graduate faculty staff graduate-sc-ssw : l 4-hour-equipment  r non-requestable  n hourly-equipment-notices o no-overdue i hourly-equipment-lost-fee 
 
 #equipment 4 hour, due at closing
     /circs only to affiliated users (student, faculty, staff).  Due at library close
 t equipment-4-hour-due-at-closing   : l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
-    g undergraduate graduate faculty staff graduate-sc-ssw : l 4-hour-equipment-due-at-closing   r non-requestable  n equipment-notices o no-overdue i hourly-equipment-lost-fee 
+    g undergraduate graduate faculty staff graduate-sc-ssw : l 4-hour-equipment-due-at-closing   r non-requestable  n hourly-equipment-notices o no-overdue i hourly-equipment-lost-fee 
 
 #equipment 4 hour, renewable
     /circs only to affiliated users (student, faculty, staff). Can be renewed
 t equipment-4-hour-renewable    : l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
-    g undergraduate graduate faculty staff graduate-sc-ssw : l 4-hour-equipment-1-renewal    r non-requestable  n equipment-notices o no-overdue i hourly-equipment-lost-fee 
+    g undergraduate graduate faculty staff graduate-sc-ssw : l 4-hour-equipment-1-renewal    r non-requestable  n hourly-equipment-notices o no-overdue i hourly-equipment-lost-fee 
 
 #equipment 1 day
     /circs only to affiliated users (student, faculty, staff).  Due at library close
 t equipment-1-day     : l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
-    g undergraduate graduate faculty staff graduate-sc-ssw : l 1-day-equipment    r non-requestable  n equipment-notices o no-overdue i hourly-equipment-lost-fee 
+    g undergraduate graduate faculty staff graduate-sc-ssw : l 1-day-equipment    r non-requestable  n daily-equipment-notices o no-overdue i hourly-equipment-lost-fee 
        
 #equipment 3 day
     /circs only to affiliated users (student, faculty, staff).  Due at library close
 t equipment-3-day    : l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
-    g undergraduate graduate faculty staff graduate-sc-ssw : l 3-day-equipment    r non-requestable  n equipment-notices o no-overdue i hourly-equipment-lost-fee 
+    g undergraduate graduate faculty staff graduate-sc-ssw : l 3-day-equipment    r non-requestable  n daily-equipment-notices o no-overdue i hourly-equipment-lost-fee 
 
 #equipment 3 day fined
 t equipment-3-day-fined : l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
-    g undergraduate graduate faculty staff graduate-sc-ssw :  l 3-day-equipment r non-requestable n equipment-notices o daily-equipment-fine i daily-equipment-lost-fee 
+    g undergraduate graduate faculty staff graduate-sc-ssw :  l 3-day-equipment r non-requestable n fined-equipment-notices o daily-equipment-fine i daily-equipment-lost-fee 
     
 #equipment 1 week fined
 t equipment-1-week-fined :  l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee
-    g undergraduate graduate faculty staff graduate-sc-ssw: l 1-week-equipment r non-requestable n equipment-notices o daily-equipment-fine i daily-equipment-lost-fee 
+    g undergraduate graduate faculty staff graduate-sc-ssw: l 1-week-equipment r non-requestable n fined-equipment-notices o daily-equipment-fine i daily-equipment-lost-fee 
 
 #equipment 1 week
     /circs only to affiliated users (student, faculty, staff).  Due at library close
 t equipment-1-week    : l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
-    g undergraduate graduate faculty staff graduate-sc-ssw : l 1-week-equipment   r non-requestable  n equipment-notices o no-overdue i hourly-equipment-lost-fee 
+    g undergraduate graduate faculty staff graduate-sc-ssw : l 1-week-equipment   r non-requestable  n daily-equipment-notices o no-overdue i hourly-equipment-lost-fee 
     
  
  #semester
@@ -136,11 +136,13 @@ t four-week :  l non-circulating r non-requestable  n no-notices   o no-overdue 
         m video-game : l 4-week-1-renewal r page-recall n standard-notices o no-overdue i standard-lost-fee
 
 #two Week
-t 2-week :l 2-week-1-renewal r page-recall o no-overdue i standard-lost-fee n standard-notices 
+t 2-week :l 2-week-1-renewal r page-recall o no-overdue i standard-lost-fee n standard-notices
+	g institution: l 2-month-no-renewal r page-recall o no-overdue i standard-lost-fee n standard-notices
 
 #comcat-borrower
 t comm-catalog  :  l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
-    g graduate graduate-sc-ssw faculty staff undergraduate  :  l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
+    g graduate graduate-sc-ssw faculty staff undergraduate um-resident-alum um-affiliate   :  l non-circulating r non-requestable  n no-notices   o no-overdue  i reserve-lost-fee 
         b FC>UM :l 4-week-no-renewal r non-requestable n standard-notices o no-overdue i standard-lost-fee 
 
     
+
